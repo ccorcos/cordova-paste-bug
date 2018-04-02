@@ -6,19 +6,44 @@
 
 <body>
 
-	<div id="input" contenteditable>Hello world</div>
+	<style>
+		#input1,
+		#input2 {
+			padding: 8px;
+			border: 1px solid black;
+		}
+	</style>
+
+	<p>
+		This app demonstrates some bugs with copy paste in Cordova iOS.
+	</p>
+
+	<p>
+		Open up an app like Messages, type some content, copy it to your clipboard and try to paste it into the input below.
+	</p>
+
+	<p>
+		Note: When you paste into this input, it should replace all of the content with the contents of the clipboard. On iOS 11.3
+		pasting this text won't work and the input will be empty.
+	</p>
+
+	<div id="input1" contenteditable></div>
 
 	<script type="text/javascript">
-		const input = document.getElementById("input")
-
+		const input = document.getElementById("input1")
 
 		window.addEventListener("paste", event => {
-			console.log(event)
+			console.log("paste into input1", event)
 			const data = event.clipboardData.getData("text/plain")
+			if (!data) {
+				console.log("could not find any text to paste")
+			}
 			input.innerHTML = data
 			event.preventDefault()
 		})
+
 	</script>
+
 </body>
 
 </html>
