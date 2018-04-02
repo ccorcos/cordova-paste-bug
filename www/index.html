@@ -7,8 +7,7 @@
 <body>
 
 	<style>
-		#input1,
-		#input2 {
+		#input {
 			padding: 8px;
 			border: 1px solid black;
 		}
@@ -27,13 +26,13 @@
 		pasting this text won't work and the input will be empty.
 	</p>
 
-	<div id="input1" contenteditable></div>
+	<div id="input" contenteditable></div>
 
 	<script type="text/javascript">
-		const input = document.getElementById("input1")
+		const input = document.getElementById("input")
 
 		window.addEventListener("paste", event => {
-			console.log("paste into input1", event)
+			console.log("paste into input", event)
 			const data = event.clipboardData.getData("text/plain")
 			if (!data) {
 				console.log("could not find any text to paste")
