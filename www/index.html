@@ -18,12 +18,11 @@
 	</p>
 
 	<p>
-		Open up an app like Messages, type some content, copy it to your clipboard and try to paste it into the input below.
+		Select some text in the input below and copy it to the clipboard. Then paste.
 	</p>
 
 	<p>
-		Note: When you paste into this input, it should replace all of the content with the contents of the clipboard. On iOS 11.3
-		pasting this text won't work and the input will be empty.
+		Note: When you paste, you should see "It worked!" in the input but on iOS 11.3, you won't.
 	</p>
 
 	<div id="input" contenteditable></div>
@@ -31,15 +30,26 @@
 	<script type="text/javascript">
 		const input = document.getElementById("input")
 
-		window.addEventListener("paste", event => {
-			console.log("paste into input", event)
-			const data = event.clipboardData.getData("text/plain")
-			if (!data) {
-				console.log("could not find any text to paste")
-			}
-			input.innerHTML = data
+		window.addEventListener("copy", event => {
+			console.log("copy", event)
 			event.preventDefault()
+			const data = JSON.stringify({ data: "It worked!" })
+			event.clipboardData.setData("app/custom-key", data)
+			console.log("copy data app/custom-key", data)
 		})
+
+		window.addEventListener("paste", event => {
+			console.log("paste", event)
+			event.preventDefault()
+			const data = event.clipboardData.getData("app/custom-key")
+			console.log("paste data", data)
+			if (!data) {
+				return
+			}
+			const result = JSON.parse(data)
+			input.innerHTML = result.data
+		})
+
 
 	</script>
 

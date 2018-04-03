@@ -14,6 +14,4 @@ Run the iOS app on your phone or in the simulator.
 
 Follow the instructions in the app:
 
-> Open up an app like Messages, type some content, copy it to your clipboard and try to paste it into the input below.
-
-You will notice that it doesn't work. When you inspect the clipboardData from the paste event, there is nothing to paste.
+> Select some text in the input below and copy it to the clipboard. Then paste. You should see "It worked!" in the input but on iOS 11.3, you won't.
