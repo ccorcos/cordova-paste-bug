@@ -4,22 +4,19 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-		"clean": "rm -rf platforms plugins",
-		"xcode": "open -a Xcode platforms/ios",
+    "clean": "rm -rf platforms plugins",
+    "xcode": "open -a Xcode platforms/ios",
     "build": "cordova prepare ios && cordova build ios"
   },
   "keywords": [],
   "author": "Chet Corcos <ccorcos@gmail.com> (http://www.chetcorcos.com/)",
   "license": "ISC",
   "dependencies": {
-    "cordova": "^8.0.0",
-    "cordova-ios": "4.5.4",
-    "cordova-plugin-whitelist": "^1.3.3"
+    "cordova": "8.0.0",
+    "cordova-ios": "https://github.com/apache/cordova-ios#7397337",
+    "cordova-plugin-whitelist": "1.3.3"
   },
   "cordova": {
-    "plugins": {
-      "cordova-plugin-whitelist": {}
-    },
     "platforms": [
       "ios"
     ]
